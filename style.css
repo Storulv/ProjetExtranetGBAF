@@ -1,13 +1,14 @@
 @media all and (max-width: 1080px){
 
-/* Header */
-.Logo_GBAF{
+    /* Header */
+    .Logo_GBAF{
     
     }
 
 
-/* Body */
+    /* Body */
 
+    
 
     label{
         display: flex;
@@ -50,8 +51,19 @@ a{
 }
 
 fieldset{
-    margin-left: 25%;
-    margin-right: 25%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+    border-radius: 7px;
+}
+
+.LogoActeurs{
+    max-width: auto;
+    height: 50px;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    margin-right: 2%;
+
 }
 
 /* Footer */
@@ -61,5 +73,4 @@ footer{
     margin-top: auto;
     text-align: center;
     padding: 7px;
-    
 }
