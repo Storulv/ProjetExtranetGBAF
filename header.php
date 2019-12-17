@@ -10,6 +10,6 @@
 
 <header>
 
-  <img class="Logo_GBAF" src="img/logogbaf.png" alt="logo GBAF" />
+  <img class="Logo_GBAF" src="img/logogbaf2.png" alt="logo GBAF" />
     
 </header>

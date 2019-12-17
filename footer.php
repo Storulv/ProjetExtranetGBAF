@@ -5,6 +5,13 @@
   <title>Titre de la page</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
+  <!-- Pied de page -->
+
 <footer>
-    
+
+  <a href="">Mentions légals</a>
+  <ins> | </ins>
+  <a href="">Contact</a>
+
 </footer>
