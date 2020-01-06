@@ -31,8 +31,8 @@
       </fieldset>
     </p>
 
-    <a href="signuppage.php">Devenir membre</a>
-    <a href="signinpage.php">Déjà membre ?</a>
+    <a href="signuppage.php" class="lien_log">Devenir membre</a>
+    <a href="signinpage.php" class="lien_log">Déjà membre ?</a>
   
 </form>
 

@@ -56,8 +56,8 @@
       </fieldset>
     </p>
     
-    <a href="signinpage.php">Déjà membre ?</a>
-    <a href="forgetid.php" >Identifiant ou mot de passe oublié ?</a>
+    <a href="signinpage.php" class="lien_log">Déjà membre ?</a>
+    <a href="forgetid.php" class="lien_log">Identifiant ou mot de passe oublié ?</a>
 </form>
 
 </body>

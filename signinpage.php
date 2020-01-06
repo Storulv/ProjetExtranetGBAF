@@ -31,8 +31,8 @@
       </fieldset>
     </p>
 
-    <a href="signuppage.php">Devenir membre</a>
-    <a href="forgetid.php" >Identifiant ou mot de passe oublié ?</a>
+    <a href="signuppage.php" class="lien_log">Devenir membre</a>
+    <a href="forgetid.php" class="lien_log">Identifiant ou mot de passe oublié ?</a>
   </form>
 
 </body>
