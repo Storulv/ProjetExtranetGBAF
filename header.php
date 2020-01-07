@@ -9,7 +9,7 @@
 <!-- En-tête de page -->
 
 <header>
-  <a href="homepage.php">
+  <a href="index.php">
   <img class="Logo_GBAF" src="img/logogbaf2.png" alt="logo GBAF" />
   </a>  
 </header>

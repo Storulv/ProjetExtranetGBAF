@@ -12,6 +12,6 @@
 
   <a href="">Mentions légals</a>
   <ins> | </ins>
-  <a href="">Contact</a>
+  <a href=""> Contact</a>
 
 </footer>

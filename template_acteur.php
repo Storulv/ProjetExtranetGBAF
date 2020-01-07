@@ -1,7 +1,7 @@
 <?php
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=extranet gbaf;charset=utf8', 'root', '');
 
-if(isset)($_GET['id']) AND !empty($_GET['id'])) {
+if(isset($_GET['id']) AND !empty($_GET['id'])) {
   $get_id = htmlspecialchars($_GET['id']);
   $acteurs = $bdd->prepare('SELECT * FROM acteurs WHERE id = ?');
   $acteurs->execute(array($get_id));
@@ -40,10 +40,12 @@ if(isset)($_GET['id']) AND !empty($_GET['id'])) {
 
   <!-- Template -->
 
-  <?php 
-    echo $acteursbis['Image'];
-  ?>
+  <img class="logo_acteur_main" src='<?php echo $titre?>'/>
 
+  <fieldset>
+    <?php
+      echo $contenu;
+    ?>
   </fieldset>
 
 

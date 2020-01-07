@@ -13,6 +13,8 @@
     label{
         display: flex;
     }
+
+    
 }
 
 /* Header */
@@ -61,6 +63,7 @@ fieldset{
     display: flex;
     flex-direction: row;
     margin-top: 1%;
+    margin-left: 0.5%;
     border-radius: 7px;
 }
 
@@ -77,8 +80,11 @@ fieldset{
     margin-right: 2%;
 }
 
-.infoButton{
-    
+.logo_acteur_main{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1%;
+    border-radius: 7px;
 }
 
 /* Footer */
