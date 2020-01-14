@@ -25,14 +25,49 @@
       <fieldset>
         <legend>Vos identifiants</legend>
         
-        <label for="Pseudo">Pseudo : </label><input type="text" name="Pseudo">
+        <label for="Pseudo"> Pseudo : </label><input type="text" name="Pseudo">
         
-        <label>Mot de passe : </label><input type="password" name="Mot de passe">
+        <label> Mot de passe : </label><input type="password" name="Mot de passe">
       </fieldset>
     </p>
 
-    <a href="signuppage.php" class="lien_log">Devenir membre</a>
-    <a href="forgetid.php" class="lien_log">Identifiant ou mot de passe oublié ?</a>
+  </form>
+
+  <!-- Formulaire d'inscription -->
+
+  <form method="post" action="traitement.php">
+    <p>
+      <fieldset>
+        <legend>Inscription</legend>
+        
+        <label> Nom : </label>
+        <input type="text" name="Nom">
+      
+        <label> Prénom : </label>
+        <input type="text" name="Prénom">
+        
+        <label for="Pseudo"> Pseudo : </label>
+        <input type="text" name="Pseudo">
+        
+        <label> Mot de passe : </label>
+        <input type="password" name="Mot de passe">
+      </fieldset>
+    
+  </form>
+
+  <!-- Formulaire d'inscription -->
+
+  <form method="post" action="traitement.php">
+    <p>
+      <fieldset>
+        <legend>Récupération de compte</legend>
+
+        <label> Question secrète : </label><input type="text" name="Question secrète">
+      
+        <label> Réponse à la question secrète : </label><input type="text" name="Réponse à la question secrète">
+      </fieldset>
+    </p>
+
   </form>
 
 </body>

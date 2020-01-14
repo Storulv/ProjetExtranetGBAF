@@ -14,7 +14,10 @@
         display: flex;
     }
 
-    
+    fieldset{
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 /* Header */
@@ -37,6 +40,11 @@ html, body{
     height: 99%;
     padding: 0;
     margin: 0;
+}
+
+label{
+    margin-left: 10px;
+    margin-right: 5px;
 }
 
 body{
@@ -62,6 +70,7 @@ form{
 fieldset{
     display: flex;
     flex-direction: row;
+    align-content: space-between;
     margin-top: 1%;
     margin-left: 0.5%;
     border-radius: 7px;
