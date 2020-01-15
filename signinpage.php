@@ -1,20 +1,4 @@
-<?php
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=extranet gbaf;charset=utf8', 'root', '');
-
-if(isset($_POST['form_inscription'])){
-  
-  $pseudo_insc = htmlspecialchars($_POST['pseudo_insc']);
-  $nom_insc = htmlspecialchars($_POST['nom_insc']);
-  $prenom_insc = htmlspecialchars($_POST['prenom_insc']);
-  $mdp_insc = password_hash($_POST['mdp_insc'],PASSWORD_DEFAULT);
-
-  if(!empty($_POST['pseudo_insc']) AND !empty($_POST['nom_insc']) AND !empty($_POST['prenom_insc']) AND !empty($_POST['mdp_insc'])){
-  }
-  else{
-    $erreur_insc = "Tout les champs doivent être complétés";
-  }
-}
-?>
+<?php include("traitement.php");?>
 
 <!doctype html>
 <html lang="fr">
@@ -43,9 +27,9 @@ if(isset($_POST['form_inscription'])){
       <fieldset>
         <legend>Connexion</legend>
         
-        <label for="Pseudo"> Pseudo : </label><input type="text" name="Pseudo">
+        <label for="Pseudo"> Username : </label><input type="text" name="username">
         
-        <label> Mot de passe : </label><input type="password" name="Mot de passe">
+        <label> Mot de passe : </label><input type="password" name="password">
 
         <input type="submit" name="form_connexion"></input>
 
@@ -53,6 +37,14 @@ if(isset($_POST['form_inscription'])){
     </p>
 
   </form>
+
+  <?php 
+  
+  if(isset($erreur_connect)){
+    echo '<font color="red">'.$erreur_connect.'</font>';
+  }
+  
+  ?>
 
   <!-- Formulaire d'inscription -->
 
@@ -62,16 +54,20 @@ if(isset($_POST['form_inscription'])){
         <legend>Inscription</legend>
         
         <label> Nom : </label>
-        <input type="text" name="nom_insc">
+        <input type="text" name="nom">
       
         <label> Prénom : </label>
-        <input type="text" name="prenom_insc">
+        <input type="text" name="prenom">
         
-        <label for="Pseudo"> Pseudo : </label>
-        <input type="text" name="pseudo_insc">
+        <label for="Pseudo"> Username : </label>
+        <input type="text" name="username">
         
         <label> Mot de passe : </label>
-        <input type="password" name="mdp_insc">
+        <input type="password" name="password">
+
+        <label> Question secrète : </label><input type="text" name="question">
+      
+        <label> Réponse à la question secrète : </label><input type="text" name="reponse">
 
         <input type="submit" name="form_inscription"></input>
       </fieldset>
@@ -93,9 +89,9 @@ if(isset($_POST['form_inscription'])){
       <fieldset>
         <legend>Identifiant ou mot de passe oublié</legend>
 
-        <label> Question secrète : </label><input type="text" name="Question secrète">
+        <label> Question secrète : </label><input type="text" name="question">
       
-        <label> Réponse à la question secrète : </label><input type="text" name="Réponse à la question secrète">
+        <label> Réponse à la question secrète : </label><input type="text" name="reponse">
 
         <input type="submit" name="form_recup"></input>
       </fieldset>
