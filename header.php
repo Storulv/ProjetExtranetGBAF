@@ -18,20 +18,14 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=extranet gbaf;charset=utf8', 'root',
   </a>  
 
   <?php 
-    if($_GET['id_user'] AND $_GET['id_user'] > 0){
-      $getid_user = intval($_GET['id_user']);
-      $requser = $bdd->prepare('SELECT * FROM membres WHERE id_user = ?');
-      $requser->execute(array($getid_user));
-      $userinfo = $requser->fetch();
-      
-    }
-    else{
-     // header('location : 127.0.0.1/ProjetExtranetGBAF/signinpage.php');
-    }
+    if(!empty($_SESSION)){
   ?>
+  <p><img class='avatar' src="img/default_avatar.png" alt="avatar"><?php echo $_SESSION['nom'] . " " . $_SESSION['prenom']?></p>
+  <form action="logout.php">
+    <input type="submit" value="Déconnexion">
+  </form>
 
-  <p><img class='avatar' src="img/default_avatar.png" alt="avatar"><?php echo $userinfo['nom, prenom'] ?></p>
+  <?php } ?>
   
-
 
 </header>

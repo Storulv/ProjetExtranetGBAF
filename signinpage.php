@@ -1,5 +1,4 @@
-<?php 
-session_start();
+<?php
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=extranet gbaf;charset=utf8', 'root', '');
 include("traitement.php");
 ?>
@@ -31,9 +30,9 @@ include("traitement.php");
       <fieldset>
         <legend>Connexion</legend>
         
-        <label for="Pseudo"> Username : </label><input type="text" name="username">
+        <label for="Pseudo"> Username : </label><input type="text" name="username" required>
         
-        <label> Mot de passe : </label><input type="password" name="password">
+        <label> Mot de passe : </label><input type="password" name="password" required>
 
         <input type="submit" name="form_connexion"></input>
 
@@ -58,20 +57,20 @@ include("traitement.php");
         <legend>Inscription</legend>
         
         <label> Nom : </label>
-        <input type="text" name="nom">
+        <input type="text" name="nom" required>
       
         <label> Prénom : </label>
-        <input type="text" name="prenom">
+        <input type="text" name="prenom" required>
         
         <label for="Pseudo"> Username : </label>
-        <input type="text" name="username">
+        <input type="text" name="username" required>
         
         <label> Mot de passe : </label>
-        <input type="password" name="password">
+        <input type="password" name="password" required>
 
-        <label> Question secrète : </label><input type="text" name="question">
+        <label> Question secrète : </label><input type="text" name="question" required>
       
-        <label> Réponse à la question secrète : </label><input type="text" name="reponse">
+        <label> Réponse à la question secrète : </label><input type="text" name="reponse" required>
 
         <input type="submit" name="form_inscription"></input>
       </fieldset>
@@ -93,9 +92,9 @@ include("traitement.php");
       <fieldset>
         <legend>Identifiant ou mot de passe oublié</legend>
 
-        <label> Question secrète : </label><input type="text" name="question">
+        <label> Question secrète : </label><input type="text" name="question" required>
       
-        <label> Réponse à la question secrète : </label><input type="text" name="reponse">
+        <label> Réponse à la question secrète : </label><input type="text" name="reponse" required>
 
         <input type="submit" name="form_recup"></input>
       </fieldset>

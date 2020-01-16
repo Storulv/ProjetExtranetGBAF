@@ -24,7 +24,6 @@ if(isset($_POST['form_inscription'])){
       // Entrée dans la BDD des informations de connection
       $insertmembre = $bdd->prepare("INSERT INTO membres(nom, prenom, username, password, question, reponse) VALUES(?, ?, ?, ?, ?, ?)");
       $insertmembre->execute(array($pseudo_insc, $nom_insc, $prenom_insc, $password_insc, $question_insc, $reponse));
-      //$erreur = "Votre compte a bien été créé."; // remplacer $erreur par $_SESSION
       $idmembre = $bdd->prepare("SELECT LAST_INSERT_ID()");
       $idmembre->execute();
       $membreconnect = $idmembre->fetch();
@@ -46,23 +45,28 @@ if(isset($_POST['form_inscription'])){
 }
 
 // PHP formulaire de connection
-session_start();
 
 if(isset($_POST['form_connexion'])){
     $username_connect = htmlspecialchars($_POST['username']);
-    $password_connect = password_hash($_POST['password'],PASSWORD_DEFAULT);
+    $password_connect = $_POST['password'];
 
     // Verif si tout les champs sont remplis
     if(!empty($username_connect) AND !empty($password_connect)){
       // Requêtes de connexion au compte utilisateur existant
-      $requser = $bdd->prepare("SELECT * FROM membres WHERE username = ? AND password = ? ");
-      $requser->execute(array($username_connect, $password_connect));
+      $requser = $bdd->prepare("SELECT * FROM membres WHERE username = ? ");
+      $requser->execute(array($username_connect));
       $userexist = $requser->rowCount();
       if($userexist == 1){
         $userinfo = $requser->fetch();
+        $password_match = password_verify($password_connect, $userinfo['password']);
+        if($password_match){
+        session_start();
         $_SESSION['id_user'] = $userinfo['id_user'];
         $_SESSION['username'] = $userinfo['username'];
-        header("Location: index.php". $_SESSION['id_user']);
+        $_SESSION['nom'] = $userinfo['nom'];
+        $_SESSION['prenom'] = $userinfo['prenom'];
+        header("Location: index.php");
+        }
       }
       else{
         $erreur_connect = "Mot de passe ou Username incorrect.";
