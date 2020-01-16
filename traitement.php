@@ -46,6 +46,7 @@ if(isset($_POST['form_inscription'])){
 }
 
 // PHP formulaire de connection
+session_start();
 
 if(isset($_POST['form_connexion'])){
     $username_connect = htmlspecialchars($_POST['username']);
@@ -53,10 +54,22 @@ if(isset($_POST['form_connexion'])){
 
     // Verif si tout les champs sont remplis
     if(!empty($username_connect) AND !empty($password_connect)){
-        echo "ok";
+      // Requêtes de connexion au compte utilisateur existant
+      $requser = $bdd->prepare("SELECT * FROM membres WHERE username = ? AND password = ? ");
+      $requser->execute(array($username_connect, $password_connect));
+      $userexist = $requser->rowCount();
+      if($userexist == 1){
+        $userinfo = $requser->fetch();
+        $_SESSION['id_user'] = $userinfo['id_user'];
+        $_SESSION['username'] = $userinfo['username'];
+        header("location : 127.0.0.1/ProjetExtranetGBAF/index.php". $_SESSION['id_user']);
+      }
+      else{
+        $erreur_connect = "Mot de passe ou Username incorrect.";
+      }
     }
     else{
-        $erreur_connect = "Tout les champs doivent être complétés";
+      $erreur_connect = "Tout les champs doivent être complétés.";
     }
 }
 //var_dump($_POST);

@@ -29,6 +29,13 @@
     margin: 1%;
 }
 
+.avatar{
+    max-width: auto;
+    height: 50px;
+    margin: 1%;
+    align-items: flex-end;
+}
+
 header{
     background-color: #BF2000;
     padding: 7px;
