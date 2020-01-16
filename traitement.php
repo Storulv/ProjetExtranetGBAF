@@ -30,7 +30,7 @@ if(isset($_POST['form_inscription'])){
       $membreconnect = $idmembre->fetch();
       $_SESSION["utilisateur_connecte"] = $membreconnect[0];
       
-      header('Location : 127.0.0.1/ProjetExtranetGBAF/index.php');
+      header('Location: index.php');
       
     
     }
@@ -62,7 +62,7 @@ if(isset($_POST['form_connexion'])){
         $userinfo = $requser->fetch();
         $_SESSION['id_user'] = $userinfo['id_user'];
         $_SESSION['username'] = $userinfo['username'];
-        header("location : 127.0.0.1/ProjetExtranetGBAF/index.php". $_SESSION['id_user']);
+        header("Location: index.php". $_SESSION['id_user']);
       }
       else{
         $erreur_connect = "Mot de passe ou Username incorrect.";
