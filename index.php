@@ -1,13 +1,10 @@
 <?php
-if(session_start()){
+session_start();
 
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=extranet gbaf;charset=utf8', 'root', '');
 
 $acteurs = $bdd->query('SELECT * FROM acteurs ORDER BY id DESC');
-}
-else{
-  header('Location: signinpage.php');
-}
+
 ?>
 
 <!doctype html>

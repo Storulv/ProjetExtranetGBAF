@@ -1,4 +1,5 @@
 <?php
+// traitement template acteurs
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=extranet gbaf;charset=utf8', 'root', '');
 
 if(isset($_GET['id']) AND !empty($_GET['id'])) {
@@ -10,6 +11,19 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     $acteurs = $acteurs->fetch();
     $titre = $acteurs['Image'];
     $contenu = $acteurs['Description'];
+
+    // commentaires
+    $commentaires = $bdd->prepare('SELECT * FROM commentaires WHERE id = SELECT * FROM acteurs WHERE id = ?');
+    $commentaires->execute(array($get_id));
+    
+    if($commentaires->rowCount() == 1){
+      $commentaires = $commentaires->fetch();
+      $message = $commentaires['message'];
+      $date = $commentaires['date'];
+    }
+    else{
+      $nocomment = "Aucun commentaire n\'a été rédigé.";
+    }
  } else {
     die('Cet article n\'existe pas !');
  }
@@ -46,6 +60,25 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     <?php
       echo $contenu;
     ?>
+  </fieldset>
+
+  <fieldset class="fieldset_gestion_account">
+    <form>
+      <fieldset>
+        <legend>Publier un commentaire</legend>
+        <input type="text" name="new_commentaire">
+      </fieldset>
+    </form>
+    <fieldset>
+      <?php
+        if(isset($commentaires)){
+          echo $message;
+        }
+        else{
+          echo $nocomment;
+        }
+      ?>
+    </fieldset>
   </fieldset>
 
 
