@@ -1,10 +1,13 @@
 <?php
-session_start();
+if(session_start()){
 
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=extranet gbaf;charset=utf8', 'root', '');
 
 $acteurs = $bdd->query('SELECT * FROM acteurs ORDER BY id DESC');
-
+}
+else{
+  header('Location: signinpage.php');
+}
 ?>
 
 <!doctype html>
@@ -30,11 +33,11 @@ $acteurs = $bdd->query('SELECT * FROM acteurs ORDER BY id DESC');
   <!-- Template -->
     
     <?php while($a = $acteurs->fetch()) { ?>
-    <fieldset>
+    <fieldset class="fieldset_acteurs">
         <img class='LogoActeurs' src='<?= $a['Image'] ?>'><?= $a['resume'] ?>
-        <a href="template_acteur.php?id=<?= $a['id'] ?>"><button class="infoButton">Plus d'informations ...</button></a></fieldset>
-        <?php } ?>
+        <a href="template_acteur.php?id=<?= $a['id'] ?>"><button class="infoButton">Afficher la suite</button></a>
     </fieldset>
+        <?php } ?>
 
 
 </body>

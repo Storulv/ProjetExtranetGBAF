@@ -24,11 +24,11 @@ include("traitement.php");
 <body>
 
   <!-- Formulaire de connection -->
-
-  <form method="post" action="">
-    <p>
-      <fieldset>
-        <legend>Connexion</legend>
+  
+  <fieldset class="fieldset_center">
+  <legend>Connexion</legend>
+    
+      <form method="post" action="">
         
         <label for="Pseudo"> Username : </label><input type="text" name="username" required>
         
@@ -36,26 +36,24 @@ include("traitement.php");
 
         <input type="submit" name="form_connexion"></input>
 
-      </fieldset>
-    </p>
-
-  </form>
+      </form>
+    
+  </fieldset>
+  
 
   <?php 
-  
   if(isset($erreur_connect)){
     echo '<font color="red">'.$erreur_connect.'</font>';
   }
-  
   ?>
 
   <!-- Formulaire d'inscription -->
 
-  <form method="post" action="">
-    <p>
-      <fieldset>
-        <legend>Inscription</legend>
-        
+  <fieldset class="fieldset_center">
+  <legend>Inscription</legend>
+    
+      <form method="post" action="" >
+              
         <label> Nom : </label>
         <input type="text" name="nom" required>
       
@@ -64,43 +62,41 @@ include("traitement.php");
         
         <label for="Pseudo"> Username : </label>
         <input type="text" name="username" required>
-        
+        <br /><br />
         <label> Mot de passe : </label>
         <input type="password" name="password" required>
 
         <label> Question secrète : </label><input type="text" name="question" required>
       
         <label> Réponse à la question secrète : </label><input type="text" name="reponse" required>
-
-        <input type="submit" name="form_inscription"></input>
-      </fieldset>
-    
-  </form>
-
-  <?php 
   
+        <input type="submit" name="form_inscription"></input>
+        
+      </form>
+
+  </fieldset>
+  
+  <?php 
   if(isset($erreur_insc)){
     echo '<font color="red">'.$erreur_insc.'</font>';
   }
-  
   ?>
 
   <!-- Formulaire de récupération -->
 
-  <form method="post" action="">
-    <p>
-      <fieldset>
-        <legend>Identifiant ou mot de passe oublié</legend>
-
+  <fieldset class="fieldset_center">
+  <legend>Identifiant ou mot de passe oublié</legend> 
+    
+      <form method="post" action="">
+      
         <label> Question secrète : </label><input type="text" name="question" required>
       
         <label> Réponse à la question secrète : </label><input type="text" name="reponse" required>
 
         <input type="submit" name="form_recup"></input>
-      </fieldset>
-    </p>
-
-  </form>
+      </form>
+  </fieldset>
+  
 
 </body>
 

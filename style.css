@@ -29,6 +29,10 @@
     margin: 1%;
 }
 
+.logo_membre{
+    
+}
+
 .avatar{
     max-width: auto;
     height: 50px;
@@ -77,10 +81,29 @@ form{
 fieldset{
     display: flex;
     flex-direction: row;
-    align-content: space-between;
     margin-top: 1%;
-    margin-left: 0.5%;
     border-radius: 7px;
+}
+
+.fieldset_center{
+    display: flex;
+    align-self: center;
+    flex-direction: row;
+    margin-top: 1%;
+    border-radius: 7px;
+}
+
+.fieldset_gestion_account{
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    margin-top: 1%;
+    border-radius: 7px;
+}
+
+.new_gestion_account{
+    display: flex;
+    flex-direction: row;
 }
 
 .field_description{
@@ -101,6 +124,11 @@ fieldset{
     margin-left: auto;
     margin-top: 1%;
     border-radius: 7px;
+}
+
+.center_button{
+    margin-left: 50%;
+    margin-right: 50%;
 }
 
 /* Footer */

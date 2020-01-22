@@ -1,6 +1,42 @@
 <?php
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=extranet gbaf;charset=utf8', 'root', '');
 
+// PHP formulaire de connection
+
+if(isset($_POST['form_connexion'])){
+    $username_connect = htmlspecialchars($_POST['username']);
+    $password_connect = $_POST['password'];
+
+    // Verif si tout les champs sont remplis
+    if(!empty($username_connect) AND !empty($password_connect)){
+      // Requêtes de connexion au compte utilisateur existant
+      $requser = $bdd->prepare("SELECT * FROM membres WHERE username = ? ");
+      $requser->execute(array($username_connect));
+      $userexist = $requser->rowCount();
+      if($userexist == 1){
+        $userinfo = $requser->fetch();
+        $password_match = password_verify($password_connect, $userinfo['password']);
+        if($password_match){
+        session_start();
+        $_SESSION['id_user'] = $userinfo['id_user'];
+        $_SESSION['username'] = $userinfo['username'];
+        $_SESSION['nom'] = $userinfo['nom'];
+        $_SESSION['prenom'] = $userinfo['prenom'];
+        $_SESSION['password'] = $userinfo['password'];
+        $_SESSION['question'] = $userinfo['question'];
+        $_SESSION['reponse'] = $userinfo['reponse'];
+        header("Location: index.php");
+        }
+      }
+      else{
+        $erreur_connect = "Mot de passe ou Username incorrect.";
+      }
+    }
+    else{
+      $erreur_connect = "Tout les champs doivent être complétés.";
+    }
+}
+
 // PHP formulaire d'inscription
 if(isset($_POST['form_inscription'])){
   
@@ -44,38 +80,11 @@ if(isset($_POST['form_inscription'])){
   }
 }
 
-// PHP formulaire de connection
+//PHP Account page management
 
-if(isset($_POST['form_connexion'])){
-    $username_connect = htmlspecialchars($_POST['username']);
-    $password_connect = $_POST['password'];
 
-    // Verif si tout les champs sont remplis
-    if(!empty($username_connect) AND !empty($password_connect)){
-      // Requêtes de connexion au compte utilisateur existant
-      $requser = $bdd->prepare("SELECT * FROM membres WHERE username = ? ");
-      $requser->execute(array($username_connect));
-      $userexist = $requser->rowCount();
-      if($userexist == 1){
-        $userinfo = $requser->fetch();
-        $password_match = password_verify($password_connect, $userinfo['password']);
-        if($password_match){
-        session_start();
-        $_SESSION['id_user'] = $userinfo['id_user'];
-        $_SESSION['username'] = $userinfo['username'];
-        $_SESSION['nom'] = $userinfo['nom'];
-        $_SESSION['prenom'] = $userinfo['prenom'];
-        header("Location: index.php");
-        }
-      }
-      else{
-        $erreur_connect = "Mot de passe ou Username incorrect.";
-      }
-    }
-    else{
-      $erreur_connect = "Tout les champs doivent être complétés.";
-    }
-}
+
+
 //var_dump($_POST);
 //var_dump("coucou");
 //exit;
