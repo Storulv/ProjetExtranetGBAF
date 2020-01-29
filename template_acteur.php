@@ -13,7 +13,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     $contenu = $acteurs['Description'];
 
     // commentaires
-    $commentaires = $bdd->prepare('SELECT * FROM commentaires WHERE id = SELECT * FROM acteurs WHERE id = ?');
+    $commentaires = $bdd->prepare('SELECT * FROM commentaires WHERE id_acteurs = ?');
     $commentaires->execute(array($get_id));
     
     if($commentaires->rowCount() == 1){
